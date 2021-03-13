@@ -1,0 +1,1 @@
+export { MenuLayoutView as MenuLayout } from './view';

@@ -1,0 +1,1 @@
+export { HeaderLayoutView as HeaderLayout } from './view';

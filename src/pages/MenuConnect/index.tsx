@@ -1,0 +1,1 @@
+export { MenuConnectView as MenuConnect } from './view';

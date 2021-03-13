@@ -1,0 +1,1 @@
+export { ContentLayoutView as ContentLayout } from './view';

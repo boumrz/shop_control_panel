@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC } from 'react';
+import { Route, Switch, HashRouter } from 'react-router-dom';
+import { routes } from './routes';
+import { MenuConnect } from './pages/MenuConnect';
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <>
+        <HashRouter>
+          <Switch>
+            {routes.map(({ getPath, component: TargetComponent, key, ...route }) => (
+                <Route
+                    key={key}
+                    {...route}
+                    path={getPath}
+                    /* eslint-disable react/jsx-no-bind */
+                    render={(): ReturnType<FC> => (
+                        <MenuConnect>
+                            <TargetComponent />
+                        </MenuConnect>
+                    )}
+                />
+            ))}
+          </Switch>
+        </HashRouter>
+      </>
   );
 }
 
