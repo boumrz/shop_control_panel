@@ -1,9 +1,22 @@
 import React from 'react';
 import { testConfig } from '../../configs/testConfig';
+import { service } from '../../services/deferList.service';
 import { MainContainer, ItemsList, PayButton, ButtonBox, Product, ImgBox } from './styles';
 
 export const ShopListView = () => {
     const [product, setProducts] = React.useState('');
+    React.useEffect(() => {
+        const id = '1';
+        service
+            .deferList(id)
+            .then((res) => {
+                console.log('response', res);
+            })
+            .catch((err) => {
+                console.log('err', err);
+                throw err;
+            });
+    }, []);
     const handleChange = (idProduct: any) => (e: any) => {
         const checkedTarget = e.target.checked;
         const datasetTarget = e.target.dataset;
