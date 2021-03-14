@@ -9,7 +9,7 @@ export const MenuLayoutView = (props: any) => {
                 {logo}
             </LogoBox>
             <ContentBox>
-                <CustomButton>
+                <CustomButton isActive>
                     Список отложенных товаров
                 </CustomButton>
             </ContentBox>

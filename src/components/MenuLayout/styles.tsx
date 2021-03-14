@@ -1,5 +1,9 @@
 import styled from 'styled-components';
 
+interface Props {
+    isActive?: boolean;
+}
+
 export const MainContainer = styled.div`
     display: flex;
     flex-direction: column;
@@ -33,7 +37,7 @@ export const ContentBox = styled.div`
     color: white;
 `;
 
-export const CustomButton = styled.button`
+export const CustomButton = styled.button<Props>`
     width: 100%;
     background: none;
     border: none;
@@ -41,8 +45,12 @@ export const CustomButton = styled.button`
     color: white;
     outline: none;
     
+    ${props => props.isActive && `
+        border-right: 4px solid orange;
+    `}
+    
     &:hover {
         cursor: pointer;
-        background-color: grey;
+        background-color: #5c5c5c;
     }
 `;
