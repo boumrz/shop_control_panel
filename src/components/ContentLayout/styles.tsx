@@ -6,5 +6,5 @@ export const MainContainer = styled.div`
     margin-left: 250px;
     position: absolute;
     top: 50px;
-    background-color: red;
+    background-color: white;
 `;

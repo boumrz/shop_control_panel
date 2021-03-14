@@ -1,10 +1,18 @@
 import React from 'react';
-import { MainContainer } from './styles';
+import { logo } from '../../constants/logos';
+import { LogoBox, ContentBox, MainContainer, CustomButton } from "./styles";
 
 export const MenuLayoutView = (props: any) => {
     return (
         <MainContainer>
-            Menu Layout
+            <LogoBox>
+                {logo}
+            </LogoBox>
+            <ContentBox>
+                <CustomButton>
+                    Список отложенных товаров
+                </CustomButton>
+            </ContentBox>
         </MainContainer>
     );
 }
