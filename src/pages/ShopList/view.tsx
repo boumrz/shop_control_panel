@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { testConfig } from '../../configs/testConfig';
 import { service } from '../../services/deferList.service';
 import { MainContainer, ItemsList, PayButton, ButtonBox, Product, ImgBox } from './styles';
 
 export const ShopListView = () => {
-    const [product, setProducts] = React.useState('');
-    React.useEffect(() => {
+    const [product, setProducts] = useState('');
+    const history = useHistory();
+    useEffect(() => {
         const id = '1';
         service
             .deferList(id)
@@ -28,7 +30,7 @@ export const ShopListView = () => {
         }
     }
     const handleClick = () => {
-        console.log('wertyuii', testConfig.filter(({ id }) => id === product));
+        history.push('/checkout');
     }
     return (
         <MainContainer>

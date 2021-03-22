@@ -1,4 +1,5 @@
 import { ShopList } from './pages/ShopList';
+import { Checkout } from './pages/Checkout';
 
 interface Route {
     getPath: string;
@@ -13,5 +14,11 @@ export const routes: Route[] = [
         key: 'root',
         exact: true,
         component: ShopList,
+    },
+    {
+        getPath: '/checkout',
+        key: 'checkout',
+        exact: true,
+        component: Checkout,
     }
 ];

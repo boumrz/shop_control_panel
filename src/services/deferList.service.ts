@@ -6,7 +6,7 @@ class DeferList {
     public async deferList(payload: any): Promise<ResponseDeferFutureType> {
         return client
             .post(
-                `http://194.87.94.73:3001${request(payload)}`
+                `http://buythen.ru:3001${request(payload)}`
             )
             .then((response) => {
                 if (response.data) {
