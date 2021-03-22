@@ -31,7 +31,9 @@ export const Product = styled.div`
     display: flex;
     height: 40px;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-left: 64px;
+    margin-right: 64px;
 `;
 
 export const ImgBox = styled.div`

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { testConfig } from '../../configs/testConfig';
 import { service } from '../../services/deferList.service';
-import { MainContainer, ItemsList, PayButton, ButtonBox, Product, ImgBox } from './styles';
+import { MainContainer, ItemsList, PayButton, ButtonBox, Product } from './styles';
 
 export const ShopListView = () => {
-    const [product, setProducts] = useState('');
+    const [product, setProducts] = useState<any>('');
+    const [productId, setProductId] = useState<any>('');
     const history = useHistory();
     useEffect(() => {
-        const id = '1';
+        const id = 1;
         service
             .deferList(id)
             .then((res) => {
-                console.log('response', res);
+                setProducts(res);
             })
             .catch((err) => {
                 console.log('err', err);
@@ -22,28 +22,29 @@ export const ShopListView = () => {
     const handleChange = (idProduct: any) => (e: any) => {
         const checkedTarget = e.target.checked;
         const datasetTarget = e.target.dataset;
-        if (checkedTarget && datasetTarget && !product) {
-            setProducts(idProduct);
+        if (checkedTarget && datasetTarget && !productId) {
+            setProductId(idProduct);
         }
         if (!checkedTarget && datasetTarget) {
-            setProducts('');
+            setProductId('');
         }
     }
     const handleClick = () => {
         history.push('/checkout');
     }
+    console.log('product', productId);
     return (
         <MainContainer>
             <ItemsList>
-                {testConfig.map(({ id, shopName, logo, productName, amount, count, sum }) => (
+                {/*{product && product.products.map(({ id, shopName, logo, productName, amount, count, sum }) => (*/}
+                {product && product.products.map(({ id, productName, amount, shopName, quantity }: any) => (
                     <Product key={id}>
-                        <input type='checkbox' disabled={product !== '' && product !== id} data-id={id} id={id} name='productName' onChange={handleChange(id)} />
+                        <input type='checkbox' disabled={productId !== '' && productId !== id} data-id={id} id={id} name='productName' onChange={handleChange(id)} />
                         <span>{shopName}</span>
-                        <ImgBox>{logo}</ImgBox>
                         <span>{productName}</span>
+                        <span>{quantity}</span>
+                        <span>{quantity * amount}</span>
                         <span>{amount}</span>
-                        <span>{count}</span>
-                        <span>{sum}</span>
                     </Product>
                 ))}
             </ItemsList>
